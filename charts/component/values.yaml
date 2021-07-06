@@ -1,0 +1,23 @@
+replicaCount: 1
+namespace: test
+
+image:
+  repository: repository.com/name
+  name: component-name
+  tag: null
+  pullPolicy: Always
+
+slot: null
+
+deployment:
+  name: component-name
+  containerPort: 80
+  strategy: Recreate
+
+resources:
+  limits:
+    cpu: 1
+    memory: 512Mi
+  requests:
+    cpu: 200m
+    memory: 90Mi

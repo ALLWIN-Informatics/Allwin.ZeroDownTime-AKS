@@ -1,0 +1,16 @@
+controller:
+  config:
+    server-tokens: "false"
+    use-http2: "false"
+    enable-modsecurity: "true"
+    modsecurity-snippet: |
+      SecRequestBodyAccess On
+      SecAuditEngine RelevantOnly
+      Include /etc/nginx/owasp-modsecurity-crs/nginx-modsecurity.conf
+  admissionWebhooks:
+    patch:
+      nodeSelector:
+        kubernetes.io/os: linux
+defaultBackend:
+  nodeSelector:
+    kubernetes.io/os: linux
